@@ -16,38 +16,28 @@ import com.virtualpairprogrammers.domain.ShoppingCart;
 import com.virtualpairprogrammers.services.BookService;
 
 @Controller
+@Scope("session")
 public class CartManagementController
 {
 	@Autowired
 	private BookService bookService;
 
+	private ShoppingCart cart = new ShoppingCart();
+	
+	
 	@RequestMapping("/addToCart")
-	public ModelAndView addToCart(@RequestParam("id") int id, HttpSession session)
+	public ModelAndView addToCart(@RequestParam("id") int id)
 	{
 		Book requiredBook = bookService.getBookById(id);
-
-		// BUT HOW DO WE ADD IT TO THE USER'S SESSION?
-		
-		ShoppingCart cart = (ShoppingCart)session.getAttribute("cart");
-		if (cart == null) {	
-			cart = new ShoppingCart();
-		}
-		
 		cart.addItem(requiredBook);
-		session.setAttribute("cart", cart);
-
 		return new ModelAndView("/bookAddedToCart.jsp", "title", requiredBook.getTitle());
 	}
 	
 	@RequestMapping("viewCart")
-	public ModelAndView viewCart(HttpSession session) {
+	public ModelAndView viewCart() {
 		
-		ShoppingCart cart = (ShoppingCart)session.getAttribute("cart");
 		List<Book> allBooks = cart.getAllItems();
-		
 		return new ModelAndView("/cartContents.jsp", "cart", allBooks);
-		
-		
 	}
 	
 	
