@@ -10,6 +10,6 @@
 		<li><a href='viewAllBooks.do'>All Books</a></li>
 		<li><a href='<c:url value="viewCart.do"/>'>Your Shopping Cart</a></li>
 		<li><a href='findByAuthor.jsp'>Find By Author</a></li>
-		<li><a href='add-new-book.jsp'>Add a New Book</a></li>
+		<li><a href='addNewBook.do'>Add a New Book</a></li>
 	</ul>
 </div>

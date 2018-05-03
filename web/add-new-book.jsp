@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
@@ -13,10 +15,17 @@
 
       <div id="addBook">
         <form:form commandName="book">
-	   	    <label>Enter ISBN</label><form:input path="isbn"/>	                    
-		    <label>Enter Title</label><form:input path="title"/>	         	
-	   		<label>Enter Author</label><form:input path="author"/>	         	
-	   	 	<label>Enter Price</label><form:input path="price"/>         
+	   	    <label><fmt:message key="book.isbn"/></label> <form:input path="isbn"/>	
+	   	                             <form:errors path="isbn" cssClass="error"/>           
+	   	                        
+		    <label><fmt:message key="book.title"/></label> <form:input path="title"/>
+		    						  <form:errors path="title" cssClass="error"/>           
+		    	         	
+	   		<label><fmt:message key="book.author"/></label><form:input path="author"/>
+	   							       <form:errors path="author" cssClass="error"/>           	 
+	   		        	
+	   	 	<label><fmt:message key="book.price"/></label><form:input path="price"/>
+	   	 						      <form:errors path="price" cssClass="error"/>                    
 	
 	    	<input type="submit" value="Add New Book"/>
 	 	</form:form>		   	  
