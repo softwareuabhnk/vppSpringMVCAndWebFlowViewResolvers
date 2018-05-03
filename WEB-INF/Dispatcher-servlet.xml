@@ -14,7 +14,7 @@
 	   
 	   
 	   <!-- scan for all controllers in the application-->   
-	   <context:component-scan base-package="com.virtualpairprogrammers.control"/>
+	   <context:component-scan base-package="com.virtualpairprogrammers"/>
 	   
 	   
 	   <!-- Not needed when automatic controller scanning -->	   

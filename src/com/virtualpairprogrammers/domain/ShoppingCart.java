@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("session")
-public class ShoppingCart implements Serializable
+public class ShoppingCart
 {
 	private List<Book> shopping = new ArrayList<Book>();
 
