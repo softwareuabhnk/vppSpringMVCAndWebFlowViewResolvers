@@ -4,8 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
          
-         
-         
+             
     <!--  we've already configured Spring-MVC for you - nothing to do here! -->         
     <servlet>
        <servlet-name>Dispatcher</servlet-name>

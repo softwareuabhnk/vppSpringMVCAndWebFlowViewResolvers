@@ -1,13 +1,28 @@
 package com.virtualpairprogrammers.domain;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.virtualpairprogrammers.validation.ISBN;
+
 public class Book implements java.io.Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private static int nextId = 1;
 	private int id;
+	@NotEmpty
+	@ISBN
+	//@Pattern(regexp="[0-9]*[xX0-9]")
 	private String isbn;
+	@NotEmpty
 	private String title;
+	@NotEmpty
 	private String author;
+	@Min(value=0)
+	@Digits(integer=3, fraction=2)
 	private double price;
 
 	public Book(String isbn, String title, String author, double price) 

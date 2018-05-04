@@ -1,5 +1,7 @@
 package com.virtualpairprogrammers.control;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -18,8 +20,8 @@ public class CreateBookController {
 	@Autowired
 	private BookService bookService;
 	
-	@Autowired
-	private BookValidator bookValidator;
+//	@Autowired
+//	private BookValidator bookValidator;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView show() {
@@ -27,9 +29,9 @@ public class CreateBookController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processForm(Book newBook, Errors result) {
+	public ModelAndView processForm(@Valid Book newBook, Errors result) {
 
-		bookValidator.validate(newBook, result);
+//		bookValidator.validate(newBook, result);
 		if (result.hasErrors())
 		{
 			return new ModelAndView("/add-new-book.jsp", "book", newBook);
