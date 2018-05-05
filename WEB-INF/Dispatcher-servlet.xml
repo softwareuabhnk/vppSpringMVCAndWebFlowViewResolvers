@@ -13,16 +13,32 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"> 
 	
-		
+	   <!-- Message bundle -->	
 		<bean id="messageSource"
-				class="org.springframework.context.support.ResourceBundleMessageSource">
-				
+				class="org.springframework.context.support.ResourceBundleMessageSource">	
 				<property name="basename" value="messages"/>
 				
 		</bean>
 	
 	   <import resource="application.xml"/>
 	   
+	   <!-- Chaining resolvers --> 
+	   <!-- Resolver bundle 1 -->	   
+	   <bean id="bundleViewResolver"
+            class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+	  	 	<property name="basename" value="views"/>
+	  	 	<property name="order" value="1"/>
+	   </bean>  
+	  
+	   <!-- Resolver bundle 2 -->	
+	   <!-- use url address to identify jsp file --> 
+	   <bean id="urlViewResolver"
+	       class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	   		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	  		<property name="prefix" value="/"/>
+	 	    <property name="suffix" value=".jsp"/> 
+	 	    <property name="order" value="2"/>
+	   </bean>	   
 	   
 	   <!-- scan for all controllers in the application-->   
 	   <context:component-scan base-package="com.virtualpairprogrammers"/>

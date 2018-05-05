@@ -25,7 +25,7 @@ public class CreateBookController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView show() {
-		return new ModelAndView("/add-new-book.jsp", "book", new Book());
+		return new ModelAndView("/add-new-book", "book", new Book());
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
@@ -34,9 +34,9 @@ public class CreateBookController {
 //		bookValidator.validate(newBook, result);
 		if (result.hasErrors())
 		{
-			return new ModelAndView("/add-new-book.jsp", "book", newBook);
+			return new ModelAndView("/add-new-book", "book", newBook);
 		}
 		bookService.registerNewBook(newBook);
-		return new ModelAndView("/book-added.jsp", "title", newBook.getTitle());
+		return new ModelAndView("/book-added", "title", newBook.getTitle());
 	}
 }

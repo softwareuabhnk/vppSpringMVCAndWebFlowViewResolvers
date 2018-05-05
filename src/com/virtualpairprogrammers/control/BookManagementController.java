@@ -19,17 +19,18 @@ public class BookManagementController {
 	@Autowired
 	private BookService bookService;
 	
+
 	
 	@RequestMapping("viewAllBooksPDF")
 	public ModelAndView viewAllBooksPDF() {
 		List<Book> allBooks = bookService.getEntireCatalogue();
-		return new ModelAndView(new BooksReportPdf(),"allBooks", allBooks);
+		return new ModelAndView("booksReportPdf","allBooks", allBooks);
 	}
 	
 	@RequestMapping("viewAllBooksExcel")
 	public ModelAndView viewAllBooksExcel() {
 		List<Book> allBooks = bookService.getEntireCatalogue();
-		return new ModelAndView(new BooksReportExcel(),"allBooks", allBooks);
+		return new ModelAndView("booksReportExcel","allBooks", allBooks);
 	}
 	
 	// Not need when auto wiring
@@ -41,7 +42,7 @@ public class BookManagementController {
 	@RequestMapping("/viewAllBooks")
 	public ModelAndView viewAllBooks() {
 		List<Book> allBooks = bookService.getEntireCatalogue();
-		return new ModelAndView("/displayAllBooks.jsp", "allBooks", allBooks);
+		return new ModelAndView("displayAllBooks", "allBooks", allBooks);
 	}
 	
 	
@@ -50,7 +51,7 @@ public class BookManagementController {
 		
      List<Book> books = bookService.getAllBooksByAuthor(author);
      
-     return new ModelAndView("/displayAllBooks.jsp", "allBooks", books);
+     return new ModelAndView("displayAllBooks", "allBooks", books);
 		
 	}
 
